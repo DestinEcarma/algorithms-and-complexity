@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int cmp(const void *a, const void *b) {
-	return *(int *)a > *(int *)b;
+	return *(int *)a < *(int *)b;
 }
 
 void print_int(const void *value) {

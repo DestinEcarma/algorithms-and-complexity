@@ -16,7 +16,7 @@ void *selection_sort(void *arr, size_t len, size_t byte_size,
 		size_t k = i - 1;
 
 		for (size_t j = i; j < len; j++) {
-			if (cmp(sorted + min_i * byte_size, sorted + j * byte_size)) {
+			if (cmp(sorted + j * byte_size, sorted + min_i * byte_size)) {
 				min_i = j;
 			}
 		}
@@ -43,7 +43,7 @@ void *selection_sort_reverse(void *arr, size_t len, size_t byte_size,
 		size_t k = i + 1;
 
 		for (size_t j = i; j != ULONG_MAX; j--) {
-			if (!cmp(sorted + max_i * byte_size, sorted + j * byte_size)) {
+			if (!cmp(sorted + j * byte_size, sorted + max_i * byte_size)) {
 				max_i = j;
 			}
 		}
