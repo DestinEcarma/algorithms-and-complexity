@@ -5,5 +5,5 @@ Blah blah blah, a repo for my algorithms and complexity course, also known as CS
 ## Recall
 
 - [Bubble Sort](midterm/recall/bubble-sort)
-- [Insertion Sort](midint/recall/insertion-sort)
+- [Insertion Sort](midterm/recall/insertion-sort)
 - [Selection Sort](midterm/recall/selection-sort)
