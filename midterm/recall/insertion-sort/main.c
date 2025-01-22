@@ -17,12 +17,17 @@ int main() {
 	printf("Initial: ");
 	print_arr(arr, len, sizeof(int), print_int);
 
-	int *sorted = insertion_sort(arr, len, sizeof(int), cmp);
+	int *sorted_normal = insertion_sort(arr, len, sizeof(int), cmp);
 
-	printf("Sorted: ");
-	print_arr(sorted, len, sizeof(int), print_int);
+	printf("Sorted (Normal): ");
+	print_arr(sorted_normal, len, sizeof(int), print_int);
 
-	free(sorted);
+	int *sorted_reverse = insertion_sort_reverse(arr, len, sizeof(int), cmp);
+
+	printf("Sorted (Reverse): ");
+	print_arr(sorted_reverse, len, sizeof(int), print_int);
+
+	free(sorted_reverse);
 
 	return 0;
 }
