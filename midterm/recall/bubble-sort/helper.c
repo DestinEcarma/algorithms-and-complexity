@@ -24,7 +24,6 @@ void *bubble_sort(void *arr, size_t len, size_t byte_size,
 				memcpy(sorted + curr, sorted + next, byte_size);
 				memcpy(sorted + next, temp, byte_size);
 				swapped = 1;
-
 			}
 		}
 	}
