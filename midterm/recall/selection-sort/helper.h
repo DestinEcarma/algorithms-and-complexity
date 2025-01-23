@@ -15,8 +15,4 @@ void *selection_sort(void *arr, size_t len, size_t byte_size,
 void *selection_sort_reverse(void *arr, size_t len, size_t byte_size,
 							 int (*cmp)(const void *, const void *));
 
-/// A function to display an array onto the stdout/console.
-void print_arr(void *arr, size_t len, size_t byte_size,
-			   void (*print)(const void *));
-
 #endif

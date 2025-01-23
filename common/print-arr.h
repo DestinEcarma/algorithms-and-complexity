@@ -19,4 +19,9 @@ static inline void print_arr(void *arr, size_t len, size_t byte_size,
 	printf("]\n");
 }
 
+/// A function to display a integer on to the stdout/console.
+static inline void print_int(const void *value) {
+	printf("%d", *(int *)value);
+}
+
 #endif

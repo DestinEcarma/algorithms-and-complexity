@@ -1,13 +1,10 @@
+#include "./../../../common/print-arr.h"
 #include "helper.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 int cmp(const void *a, const void *b) {
 	return *(int *)a < *(int *)b;
-}
-
-void print_int(const void *value) {
-	printf("%d", *(int *)value);
 }
 
 int main() {
