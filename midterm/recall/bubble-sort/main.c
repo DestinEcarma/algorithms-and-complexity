@@ -1,11 +1,8 @@
+#include "./../../../common/cmp.h"
 #include "./../../../common/print-arr.h"
 #include "helper.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-int cmp(const void *a, const void *b) {
-	return *(int *)a > *(int *)b;
-}
 
 int main() {
 	int arr[] = {9, 5, 10, 7, 3, 2, 6, 4, 1};
@@ -14,7 +11,7 @@ int main() {
 	printf("Initial: ");
 	print_arr(arr, len, sizeof(int), print_int);
 
-	int *sorted = bubble_sort(arr, len, sizeof(int), cmp);
+	int *sorted = bubble_sort(arr, len, sizeof(int), cmp_int_g);
 
 	printf("Sorted: ");
 	print_arr(sorted, len, sizeof(int), print_int);
