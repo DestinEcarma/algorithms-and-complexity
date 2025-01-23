@@ -11,13 +11,13 @@ int main() {
 	printf("Initial: ");
 	print_arr(arr, len, sizeof(int), print_int);
 
-	int *sorted_normal = selection_sort(arr, len, sizeof(int), cmp_int_g);
+	int *sorted_normal = selection_sort(arr, len, sizeof(int), cmp_int_l);
 
 	printf("Sorted (Normal): ");
 	print_arr(sorted_normal, len, sizeof(int), print_int);
 
 	int *sorted_reverse =
-		selection_sort_reverse(arr, len, sizeof(int), cmp_int_g);
+		selection_sort_reverse(arr, len, sizeof(int), cmp_int_l);
 
 	printf("Sorted (Reverse): ");
 	print_arr(sorted_reverse, len, sizeof(int), print_int);
