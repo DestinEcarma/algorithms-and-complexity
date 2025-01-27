@@ -22,6 +22,7 @@ int main() {
 	printf("Sorted (Reverse): ");
 	print_arr(sorted_reverse, len, sizeof(int), print_int);
 
+	free(sorted_normal);
 	free(sorted_reverse);
 
 	return 0;
