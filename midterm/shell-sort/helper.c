@@ -28,17 +28,3 @@ void *shell_sort(void *arr, size_t len, size_t byte_size,
 
 	return sorted;
 }
-
-void print_arr(void *arr, size_t len, size_t byte_size,
-			   void (*print)(const void *)) {
-	printf("[");
-
-	for (size_t i = 0; i < len; i++) {
-		print(arr + i * byte_size);
-
-		if (i < len - 1)
-			printf(", ");
-	}
-
-	printf("]\n");
-}
