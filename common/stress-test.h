@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+/// This function is used to stress test a sorting algorithm.
 static inline unsigned long
 stress_test_sort(const void *arr, size_t len, size_t byte_size, size_t nt,
 				 void *(*sort)(const void *, size_t, size_t,
