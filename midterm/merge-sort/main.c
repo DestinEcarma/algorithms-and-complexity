@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define STRESS_TEST_SIZE 1000000
+#define ST_LENGTH 1000000
+#define ST_TIMES 10
 
 int main() {
 	int arr[] = {9, 5, 10, 7, 3, 2, 6, 4, 1};
@@ -30,18 +31,33 @@ int main() {
 	free(sorted_recursion);
 	free(sorted_iterative);
 
-	int arrST[STRESS_TEST_SIZE];
+	int arrST[ST_LENGTH];
 
-	for (size_t i = 0; i < STRESS_TEST_SIZE; i++) {
+	for (size_t i = 0; i < ST_LENGTH; i++) {
 		arrST[i] = rand();
 	}
 
-	printf("\nStress test (Recursion): %lu ms\n",
-		   stress_test_sort(&arrST, STRESS_TEST_SIZE, sizeof(int), 100,
-							merge_sort_recursion, cmp_int_l));
-	printf("Stress test (Iterative): %lu ms\n",
-		   stress_test_sort(&arrST, STRESS_TEST_SIZE, sizeof(int), 100,
-							merge_sort_iterative, cmp_int_l));
+	printf("\nStress Test\n");
+	printf("Length\t\t: %d\n", ST_LENGTH);
+	printf("Times\t\t: %d\n\n", ST_TIMES);
+
+	unsigned long time_recursion =
+		stress_test_sort(&arrST, ST_LENGTH, sizeof(int), ST_TIMES,
+						 merge_sort_recursion, cmp_int_l);
+
+	unsigned long time_iterative =
+		stress_test_sort(&arrST, ST_LENGTH, sizeof(int), ST_TIMES,
+						 merge_sort_iterative, cmp_int_l);
+
+	printf("Recursion\n");
+	printf("Total Time (ms)\t: %lu\n", time_recursion);
+	printf("Avg Time (ms)\t: %lu\n\n",
+		   (unsigned long)(double)time_recursion / ST_TIMES);
+
+	printf("Iterative\n");
+	printf("Total Time (ms)\t: %lu\n", time_iterative);
+	printf("Avg Time (ms)\t: %lu\n",
+		   (unsigned long)(double)time_iterative / ST_TIMES);
 
 	return 0;
 }
