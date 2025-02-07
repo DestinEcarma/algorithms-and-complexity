@@ -35,7 +35,7 @@ MergeSortRecursion(A, T, n):
         let mid = n / 2
 
         MergeSortRecursion(A[0..mid], T, mid)
-        MergeSortRecursion(B[mid..n, T, n - mid])
+        MergeSortRecursion(B[mid..n], T, n - mid])
 
         Merge(A, t, 0, mid, n)
 
