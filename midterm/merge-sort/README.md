@@ -8,7 +8,7 @@ This is my implementation of the merge sort algorithm in C.
 let A be the array to be sorted
 let n be the length of A
 
-let T be a temporary array with the length of n
+let T be a auxiliary array with the length of n
 
 Merge(A, T, m, n):
     Copy A to T
