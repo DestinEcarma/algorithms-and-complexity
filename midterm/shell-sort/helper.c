@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void *shell_sort(void *arr, size_t len, size_t byte_size,
+void *shell_sort(const void *arr, size_t len, size_t byte_size,
 				 int (*cmp)(const void *, const void *)) {
 	void *sorted = malloc(len * byte_size);
 	void *temp = malloc(byte_size);
