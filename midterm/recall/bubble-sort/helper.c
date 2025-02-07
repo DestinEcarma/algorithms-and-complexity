@@ -1,4 +1,5 @@
 #include "helper.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,10 +11,10 @@ void *bubble_sort(void *arr, size_t len, size_t byte_size,
 
 	memcpy(sorted, arr, len * byte_size);
 
-	int swapped = 1;
+	bool swapped = true;
 
 	for (size_t i = 1; i < len && swapped; i++) {
-		swapped = 0;
+		swapped = false;
 
 		for (size_t j = 0; j < len - i; j++) {
 			size_t curr = j * byte_size;
@@ -23,7 +24,7 @@ void *bubble_sort(void *arr, size_t len, size_t byte_size,
 				memcpy(temp, sorted + curr, byte_size);
 				memcpy(sorted + curr, sorted + next, byte_size);
 				memcpy(sorted + next, temp, byte_size);
-				swapped = 1;
+				swapped = true;
 			}
 		}
 	}
