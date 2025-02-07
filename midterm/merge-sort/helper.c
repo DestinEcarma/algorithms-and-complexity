@@ -102,5 +102,7 @@ void *merge_sort_iterative(const void *arr, size_t len, size_t byte_size,
 		}
 	}
 
+	free(temp);
+
 	return sorted;
 }
