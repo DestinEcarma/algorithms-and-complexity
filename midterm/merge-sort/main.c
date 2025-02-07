@@ -7,7 +7,7 @@
 #include <time.h>
 
 #define ST_LENGTH 1000000
-#define ST_TIMES 10
+#define ST_TIMES 100
 
 int main() {
 	int arr[] = {9, 5, 10, 7, 3, 2, 6, 4, 1};
