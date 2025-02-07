@@ -26,5 +26,6 @@ void *shell_sort(const void *arr, size_t len, size_t byte_size,
 		}
 	}
 
+	free(temp);
 	return sorted;
 }
