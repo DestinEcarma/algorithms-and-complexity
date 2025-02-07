@@ -33,8 +33,8 @@ MergeSortRecursion(A, T, n):
     if n > 1 then
         let mid = n / 2
 
-        MergeSortRecursion(A[0..mid], T, mid)
-        MergeSortRecursion(B[mid..n], T, n - mid])
+        Call the function recursively with
+        subarrays of A[0..mid] and A[mid..n]
 
         Merge(A, t, mid, n)
 
