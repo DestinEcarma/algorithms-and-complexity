@@ -1,6 +1,6 @@
-# Merge Sort
+# Comb Sort
 
-This is my implementation of the merge sort algorithm in C.
+This is my implementation of the comb sort algorithm in C.
 
 ## Pseudocode
 
