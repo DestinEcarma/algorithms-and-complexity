@@ -17,7 +17,7 @@ HEADERS = helper.h
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -lm
+CFLAGS = -Wall -Wextra -std=c11 -lm -O3 -funroll-loops
 
 # Directory
 TARGET_DIR = target
