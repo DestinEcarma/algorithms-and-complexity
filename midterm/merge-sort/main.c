@@ -1,8 +1,12 @@
 #include "./../../common/cmp.h"
 #include "./../../common/print-arr.h"
+#include "./../../common/stress-test.h"
 #include "helper.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+#define STRESS_TEST_SIZE 1000000
 
 int main() {
 	int arr[] = {9, 5, 10, 7, 3, 2, 6, 4, 1};
@@ -25,6 +29,19 @@ int main() {
 
 	free(sorted_recursion);
 	free(sorted_iterative);
+
+	int arrST[STRESS_TEST_SIZE];
+
+	for (size_t i = 0; i < STRESS_TEST_SIZE; i++) {
+		arrST[i] = rand();
+	}
+
+	printf("\nStress test (Recursion): %lu ms\n",
+		   stress_test_sort(&arrST, STRESS_TEST_SIZE, sizeof(int), 100,
+							merge_sort_recursion, cmp_int_l));
+	printf("Stress test (Iterative): %lu ms\n",
+		   stress_test_sort(&arrST, STRESS_TEST_SIZE, sizeof(int), 100,
+							merge_sort_iterative, cmp_int_l));
 
 	return 0;
 }
