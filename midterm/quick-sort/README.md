@@ -34,7 +34,7 @@ QuickSortHoare(A, li, hi):
             increment j until A[j] <= pivot
 
             if i < j then
-                swap A[i] and A[j]
+                swap A[i++] and A[j--]
 
         Sort the left partition
         Sort the right partition
