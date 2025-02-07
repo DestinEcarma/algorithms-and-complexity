@@ -69,7 +69,7 @@ void _merge_sort_recursion(void *arr, void *temp, size_t len, size_t byte_size,
 	}
 }
 
-void *merge_sort_recursion(void *arr, size_t len, size_t byte_size,
+void *merge_sort_recursion(const void *arr, size_t len, size_t byte_size,
 						   int (*cmp)(const void *, const void *)) {
 	void *sorted = malloc(len * byte_size);
 	void *temp = malloc(len * byte_size);
@@ -83,7 +83,7 @@ void *merge_sort_recursion(void *arr, size_t len, size_t byte_size,
 	return sorted;
 }
 
-void *merge_sort_iterative(void *arr, size_t len, size_t byte_size,
+void *merge_sort_iterative(const void *arr, size_t len, size_t byte_size,
 						   int (*cmp)(const void *, const void *)) {
 	void *sorted = malloc(len * byte_size);
 	void *temp = malloc(len * byte_size);
