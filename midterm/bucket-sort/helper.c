@@ -49,6 +49,9 @@ int *bucket_sort_int(const int *arr, size_t len) {
 
 					node->next = *curr;
 					*curr = node;
+				} else {
+					fprintf(stderr, "NodeInt memory allocation failed\n");
+					exit(1);
 				}
 			}
 
@@ -65,6 +68,9 @@ int *bucket_sort_int(const int *arr, size_t len) {
 			}
 
 			free(buckets);
+		} else {
+			free(sorted);
+			sorted = NULL;
 		}
 	}
 
