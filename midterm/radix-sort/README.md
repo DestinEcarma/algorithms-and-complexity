@@ -1,6 +1,6 @@
-# Bucket Sort
+# Radix Sort
 
-This is my implementation of the Bucket sort algorithm in C.
+This is my implementation of the Radix sort algorithm in C.
 
 ## Pseudocode
 
