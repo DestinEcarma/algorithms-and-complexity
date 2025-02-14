@@ -51,6 +51,9 @@ int *radix_lsd_sort_int(const int *arr, size_t len) {
 					node->next = buckets[pos];
 
 					buckets[pos] = node;
+				} else {
+					fprintf(stderr, "NodeInt memory allocation failed\n");
+					exit(1);
 				}
 			}
 
@@ -87,6 +90,9 @@ void _radix_msd_sort_int(int *arr, size_t low, size_t high, size_t digit) {
 				node->next = buckets[pos];
 
 				buckets[pos] = node;
+			} else {
+				fprintf(stderr, "NodeInt memory allocation failed\n");
+				exit(1);
 			}
 		}
 
