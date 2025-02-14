@@ -13,7 +13,7 @@ RadixLSD(A, n):
 
     let M be the maximum key in A
 
-    let digit = 1;
+    let digit = 1
 
     while (M / digit) > 0 do
         for i = 0 to (n - 1) do
