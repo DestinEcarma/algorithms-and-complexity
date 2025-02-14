@@ -42,7 +42,7 @@ RadixMSD(A, li, hi, digit):
                     A[hi] = value
                     hi = hi + 1
 
-                RadixMSD(A, li, hi, digit / 10)
+                RadixMSD(A, li, hi - 1, digit / 10)
 
                 li = hi
 ```
