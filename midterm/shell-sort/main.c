@@ -17,10 +17,12 @@ int main() {
 
 	int *sorted = shell_sort(arr, len, sizeof(int), cmp_int_g);
 
-	printf("Sorted: ");
-	print_arr(sorted, len, sizeof(int), print_int);
+	if (sorted != NULL) {
+		printf("Sorted: ");
+		print_arr(sorted, len, sizeof(int), print_int);
 
-	free(sorted);
+		free(sorted);
+	}
 
 	int arrST[ST_LENGTH];
 
