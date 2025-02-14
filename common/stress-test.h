@@ -13,7 +13,11 @@ stress_test_sort(const void *arr, size_t len, size_t byte_size, size_t nt,
 	clock_t start = clock();
 
 	for (size_t _ = 0; _ < nt; _++) {
-		free(sort(arr, len, byte_size, cmp));
+		void *sorted = sort(arr, len, byte_size, cmp);
+
+		if (sorted != NULL) {
+			free(sorted);
+		}
 	}
 
 	return (double)(clock() - start) / CLOCKS_PER_SEC * 1000;
