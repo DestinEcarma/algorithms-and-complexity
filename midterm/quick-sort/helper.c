@@ -35,8 +35,10 @@ void *quick_sort_lomuto(const void *arr, size_t len, size_t byte_size,
 						int (*cmp)(const void *, const void *)) {
 	void *sorted = malloc(len * byte_size);
 
-	_quick_sort_lomuto(memcpy(sorted, arr, len * byte_size),
-					   (MetaData){0, len - 1}, byte_size, cmp);
+	if (sorted != NULL) {
+		_quick_sort_lomuto(memcpy(sorted, arr, len * byte_size),
+						   (MetaData){0, len - 1}, byte_size, cmp);
+	}
 
 	return sorted;
 }
@@ -72,8 +74,10 @@ void *quick_sort_hoare(const void *arr, size_t len, size_t byte_size,
 					   int (*cmp)(const void *, const void *)) {
 	void *sorted = malloc(len * byte_size);
 
-	_quick_sort_hoare(memcpy(sorted, arr, len * byte_size),
-					  (MetaData){0, len - 1}, byte_size, cmp);
+	if (sorted != NULL) {
+		_quick_sort_hoare(memcpy(sorted, arr, len * byte_size),
+						  (MetaData){0, len - 1}, byte_size, cmp);
+	}
 
 	return sorted;
 }

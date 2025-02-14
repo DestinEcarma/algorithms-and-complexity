@@ -17,16 +17,21 @@ int main() {
 
 	int *sorted_lomuto = quick_sort_lomuto(arr, len, sizeof(int), cmp_int_l);
 
-	printf("Sorted (Lomuto): ");
-	print_arr(sorted_lomuto, len, sizeof(int), print_int);
+	if (sorted_lomuto != NULL) {
+		printf("Sorted (Lomuto): ");
+		print_arr(sorted_lomuto, len, sizeof(int), print_int);
+
+		free(sorted_lomuto);
+	}
 
 	int *sorted_hoare = quick_sort_hoare(arr, len, sizeof(int), cmp_int_l);
 
-	printf("Sorted (Hoare): ");
-	print_arr(sorted_hoare, len, sizeof(int), print_int);
+	if (sorted_hoare != NULL) {
+		printf("Sorted (Hoare): ");
+		print_arr(sorted_hoare, len, sizeof(int), print_int);
 
-	free(sorted_lomuto);
-	free(sorted_hoare);
+		free(sorted_hoare);
+	}
 
 	int arrST[ST_LENGTH];
 
