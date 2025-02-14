@@ -8,8 +8,8 @@ This is my implementation of the shell sort algorithm in C.
 let A be the array to be sorted
 let n be the length of A
 
-for gap = n / 2 to 0 : gap = gap / 2 do
-    for i = gap to n - 1 do
+for gap = (n / 2) to 0 : gap = gap / 2 do
+    for i = gap to (n - 1) do
         let key = A[i]
         let j = i
 
