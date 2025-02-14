@@ -19,17 +19,22 @@ int main() {
 	int *sorted_recursion =
 		merge_sort_recursion(arr, len, sizeof(int), cmp_int_l);
 
-	printf("Sorted (Recursion): ");
-	print_arr(sorted_recursion, len, sizeof(int), print_int);
+	if (sorted_recursion != NULL) {
+		printf("Sorted (Recursion): ");
+		print_arr(sorted_recursion, len, sizeof(int), print_int);
+
+		free(sorted_recursion);
+	}
 
 	int *sorted_iterative =
 		merge_sort_iterative(arr, len, sizeof(int), cmp_int_l);
 
-	printf("Sorted (Iterative): ");
-	print_arr(sorted_iterative, len, sizeof(int), print_int);
+	if (sorted_iterative != NULL) {
+		printf("Sorted (Iterative): ");
+		print_arr(sorted_iterative, len, sizeof(int), print_int);
 
-	free(sorted_recursion);
-	free(sorted_iterative);
+		free(sorted_iterative);
+	}
 
 	int arrST[ST_LENGTH];
 
