@@ -16,3 +16,4 @@ Blah blah blah, a repo for my algorithms and complexity course, also known as CS
 - [Merge Sort](midterm/merge-sort)
 - [Bucket Sort](midterm/bucket-sort)
 - [Radix Sort](midterm/radix-sort)
+- [Counting Sort](midterm/counting-sort)
