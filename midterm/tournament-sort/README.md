@@ -65,5 +65,5 @@ TournamentSortOnlineV1(A, n)
         else
             tree[tree[0]] = INFINITY
 
-    Use other sorting algorithm to sort the partial sorted array A (e.g. Merge Sort)
+    Sort the partial sorted array A (e.g. Merge Sort)
 ```
