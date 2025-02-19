@@ -17,3 +17,4 @@ Blah blah blah, a repo for my algorithms and complexity course, also known as CS
 - [Bucket Sort](midterm/bucket-sort)
 - [Radix Sort](midterm/radix-sort)
 - [Counting Sort](midterm/counting-sort)
+- [Tournament Sort](midterm/tournament-sort)
