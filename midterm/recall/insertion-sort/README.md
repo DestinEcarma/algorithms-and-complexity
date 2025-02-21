@@ -13,8 +13,8 @@ for i = 1 to n - 1 do
     let j = i
 
     while j > 0 and A[j - 1] > key do
-        A[j] = A[j - 1]
-        j = j - 1
+        shift A[j - 1] into A[j]
+        decrement j
 
-    A[j] = key
+    insert key into A[j]
 ```

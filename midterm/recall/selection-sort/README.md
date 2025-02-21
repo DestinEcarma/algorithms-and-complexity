@@ -13,7 +13,7 @@ for i = 0 to n - 1 do
 
     for j = i + 1 to n - 1 do
         if A[j] < A[min i] then
-            min i = j
+            set min i to j
 
     swap A[i] with A[min i]
 ```

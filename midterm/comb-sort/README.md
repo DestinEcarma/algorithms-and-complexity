@@ -12,14 +12,14 @@ let gap = n
 let swapped = true
 
 while gap > 1 or swapped is true do
-    swapped = false
-    gap = gap / 1.3
+    set swapped to false
+    set gap to gap / 1.3
 
     if gap < 1 then
-        gap = 1
+        set gap to 1
 
     for i = 0 to n - gap - 1 do
         if A[i] > A[i + gap] then
             swap A[i] and A[i + gap]
-            swapped = true
+            set swapped to true
 ```

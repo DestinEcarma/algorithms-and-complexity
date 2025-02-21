@@ -16,15 +16,15 @@ CountingSortOriginal(A, n)
 
     for i = 0 to (n - 1) do
         let key = A[i]
-        count[key] = count[key] + 1
+        increment count[key]
 
     for i = 1 to k do
-        count[i] = count[i] + count[i - 1]
+        increase count[i] by count[i - 1]
 
     for i = (n - 1) to 0 do
         let key = A[i]
-        count[key] = count[key] - 1
-        output[count[key]] = key
+        decrement count[key]
+        insert key into output[count[key]]
 
     return output
 
@@ -37,15 +37,15 @@ CountingSortShifted(A, n)
     for i = 0 to (n - 1) do
         if A[i] is not k then
             let key = A[i] + 1
-            coount[key] = count[key] + 1
+            increment count[key]
 
     for i = 1 to k do
-        count[i] = count[i] + count[i - 1]
+        increase count[i] by count[i - 1]
 
     for i = 0 to (n - 1) do
         let key = A[i]
-        output[count[key]] = key
-        count[key] = count[key] + 1
+        insert key into output[count[key]]
+        increment count[key]
 
     return output
 
@@ -59,15 +59,15 @@ CountingSortMinMax(A, n)
     for i = 0 to (n - 1) do
         if A[i] is not max then
             let key = A[i] - min + 1
-            count[key] = count[key] + 1
+            increment count[key]
 
     for i = 1 to (max - min) do
-        count[i] = count[i] + count[i - 1]
+        increase count[i] by count[i - 1]
 
     for i = 0 to (n - 1) do
         let key = A[i] - min
-        output[count[key]] = key
-        count[key] = count[key] + 1
+        insert key into output[count[key]]
+        increment count[key]
 
     return output
 ```

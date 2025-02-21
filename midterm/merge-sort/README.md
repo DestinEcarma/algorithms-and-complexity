@@ -22,9 +22,13 @@ Merge(A, T, m, n):
 
     while li < m and ri < rl do
         if A[li] < A[ri] then
-            A[i++] = T[li++]
+            A[i] = T[li]
+            increment li
         else
-            A[i++] = T[ri++]
+            A[i] = T[ri]
+            increment ri
+
+        increment i
 
     Copy T[li..m] to A
     Copy T[(m + ri)..n] to A

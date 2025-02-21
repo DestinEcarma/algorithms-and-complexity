@@ -17,7 +17,7 @@ TournamentSortOffline(A, n)
     Copy A to temp
 
     for i = n to k do
-        tree[i - 1] = i - n
+        set tree[i] to (i - n)
 
     let start = k - 1
 
@@ -27,12 +27,12 @@ TournamentSortOffline(A, n)
             let parent = left / 2
 
             if temp[tree[left]] <= temp[tree[right]] then
-                tree[parent] = tree[left]
+                set tree[parent] to tree[left]
             else
-                tree[parent] = tree[right]
+                set tree[parent] to tree[right]
 
-        A[i] = temp[tree[0]]
-        temp[tree[0]] = INFINITY
+        set A[i] to temp[tree[0]]
+        set temp[tree[0]] to INFINITY
 
         start = (k - (n - tree[0]) - 1) / 2 * 2 + 2
 
@@ -49,21 +49,21 @@ TournamentSortOnlineV1(A, n)
 
             if left >= 3 then
                 if tree[left] <= tree[right] then
-                    tree[parent] = left
+                    set tree[parent] to left
                 else
-                    tree[parent] = right
+                    set tree[parent] to right
             else
                 if tree[tree[left]] <= tree[tree[right]] then
-                    tree[parent] = tree[left]
+                    set tree[parent] to tree[left]
                 else
-                    tree[parent] = tree[right]
+                    set tree[parent] to tree[right]
 
-        A[i] = tree[tree[0]]
+        set A[i] to tree[tree[0]]
 
         if i < (n - 4) then
-            tree[tree[0]] = A[i + 4]
+            set tree[tree[0]] to A[i + 4]
         else
-            tree[tree[0]] = INFINITY
+            set tree[tree[0]] to INFINITY
 
     Sort the partial sorted array A (e.g. Merge Sort)
 ```

@@ -14,8 +14,8 @@ for gap = (n / 2) to 0 : gap = gap / 2 do
         let j = i
 
         while j >= gap and A[j - gap] > key do
-            A[j] = A[j - gap]
-            j = j - gap
+            insert A[j - gap] into A[j]
+            set j to j - gap
 
-        A[j] = key
+        set A[j] to key
 ```
