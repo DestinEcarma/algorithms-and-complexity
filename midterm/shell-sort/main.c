@@ -34,11 +34,11 @@ int main() {
 	printf("Length\t\t: %d\n", ST_LENGTH);
 	printf("Times\t\t: %d\n\n", ST_TIMES);
 
-	unsigned long time = stress_test_sort(&arrST, ST_LENGTH, sizeof(int),
+	unsigned long time = stress_test_sort(arrST, ST_LENGTH, sizeof(int),
 										  ST_TIMES, shell_sort, cmp_int_l);
 
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
 	return 0;
 }

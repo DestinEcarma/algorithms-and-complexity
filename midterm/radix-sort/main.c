@@ -59,17 +59,17 @@ int main() {
 	printf("Times\t\t: %d\n\n", ST_TIMES);
 
 	unsigned long time =
-		stress_test_sort(&arrST, ST_LENGTH, ST_TIMES, radix_lsd_sort_int);
+		stress_test_sort(arrST, ST_LENGTH, ST_TIMES, radix_lsd_sort_int);
 
 	printf("LSD\n");
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
-	time = stress_test_sort(&arrST, ST_LENGTH, ST_TIMES, radix_msd_sort_int);
+	time = stress_test_sort(arrST, ST_LENGTH, ST_TIMES, radix_msd_sort_int);
 
 	printf("MSD\n");
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
 	return 0;
 }

@@ -78,25 +78,25 @@ int main() {
 	printf("Times\t\t: %d\n", ST_TIMES);
 
 	unsigned long time =
-		stress_test_sort(&arrST, ST_LENGTH, ST_TIMES, counting_sort_int);
+		stress_test_sort(arrST, ST_LENGTH, ST_TIMES, counting_sort_int);
 
 	printf("\nOriginal\n");
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
-	time = stress_test_sort(&arrST, ST_LENGTH, ST_TIMES,
-							counting_sort_shifted_int);
+	time =
+		stress_test_sort(arrST, ST_LENGTH, ST_TIMES, counting_sort_shifted_int);
 
 	printf("\nShifted\n");
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
-	time = stress_test_sort(&arrST, ST_LENGTH, ST_TIMES,
-							counting_sort_min_max_int);
+	time =
+		stress_test_sort(arrST, ST_LENGTH, ST_TIMES, counting_sort_min_max_int);
 
 	printf("\nMin Max\n");
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
 	return 0;
 }

@@ -47,22 +47,20 @@ int main() {
 	printf("Times\t\t: %d\n\n", ST_TIMES);
 
 	unsigned long time_recursion =
-		stress_test_sort(&arrST, ST_LENGTH, sizeof(int), ST_TIMES,
+		stress_test_sort(arrST, ST_LENGTH, sizeof(int), ST_TIMES,
 						 merge_sort_recursion, cmp_int_l);
 
 	unsigned long time_iterative =
-		stress_test_sort(&arrST, ST_LENGTH, sizeof(int), ST_TIMES,
+		stress_test_sort(arrST, ST_LENGTH, sizeof(int), ST_TIMES,
 						 merge_sort_iterative, cmp_int_l);
 
 	printf("Recursion\n");
 	printf("Total Time (ms)\t: %lu\n", time_recursion);
-	printf("Avg Time (ms)\t: %lu\n\n",
-		   (unsigned long)(double)time_recursion / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n\n", time_recursion / ST_TIMES);
 
 	printf("Iterative\n");
 	printf("Total Time (ms)\t: %lu\n", time_iterative);
-	printf("Avg Time (ms)\t: %lu\n",
-		   (unsigned long)(double)time_iterative / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time_iterative / ST_TIMES);
 
 	return 0;
 }

@@ -50,11 +50,11 @@ int main() {
 	printf("Times\t\t: %d\n", ST_TIMES);
 
 	unsigned long time =
-		stress_test_sort(&arrST, ST_LENGTH, ST_TIMES, tournament_sort_offline);
+		stress_test_sort(arrST, ST_LENGTH, ST_TIMES, tournament_sort_offline);
 
 	printf("\nOffline\n");
 	printf("Total Time (ms)\t: %lu\n", time);
-	printf("Avg Time (ms)\t: %lu\n", (unsigned long)(double)time / ST_TIMES);
+	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
 	return 0;
 }

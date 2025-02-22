@@ -45,14 +45,14 @@ int main() {
 	printf("Length\t\t: %d\n", ST_LENGTH);
 	printf("Times\t\t: %d\n", ST_TIMES);
 
-	unsigned long time = stress_test_sort(&arrST, ST_LENGTH, sizeof(int),
+	unsigned long time = stress_test_sort(arrST, ST_LENGTH, sizeof(int),
 										  ST_TIMES, gnome_sort, cmp_int_geq);
 
 	printf("\nOriginal\n");
 	printf("Total Time (ms)\t: %lu\n", time);
 	printf("Avg Time (ms)\t: %lu\n", time / ST_TIMES);
 
-	time = stress_test_sort(&arrST, ST_LENGTH, sizeof(int), ST_TIMES,
+	time = stress_test_sort(arrST, ST_LENGTH, sizeof(int), ST_TIMES,
 							gnome_sort_memo, cmp_int_geq);
 
 	printf("\nMemoization\n");
