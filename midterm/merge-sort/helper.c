@@ -40,9 +40,7 @@ void merge(void *arr, void *temp, MergeMeta meta, size_t byte_size,
 	if (left_idx < meta.mid) {
 		memcpy(arr + i * byte_size, temp + left_idx * byte_size,
 			   byte_size * (meta.mid - left_idx));
-	}
-
-	if (right_idx < right_len) {
+	} else if (right_idx < right_len) {
 		memcpy(arr + (left_idx + right_idx) * byte_size,
 			   temp + (meta.mid + right_idx) * byte_size,
 			   byte_size * (right_len - right_idx));
