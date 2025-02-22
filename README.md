@@ -18,3 +18,4 @@ Blah blah blah, a repo for my algorithms and complexity course, also known as CS
 - [Radix Sort](midterm/radix-sort)
 - [Counting Sort](midterm/counting-sort)
 - [Tournament Sort](midterm/tournament-sort)
+- [Gnome Sort](midterm/gnome-sort)
