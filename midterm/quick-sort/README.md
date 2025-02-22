@@ -15,7 +15,8 @@ QuickSortLomuto(A, li, hi):
 
         for j = li to (hi - 1) do
             if A[j] < pivot then
-                swap A[i++] and A[j]
+                swap A[i] and A[j]
+                increment i
 
         swap A[i] and A[hi]
 
