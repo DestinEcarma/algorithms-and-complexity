@@ -15,7 +15,8 @@ StrandSortArray(A, n)
     let sorted len = 0
 
     while n > 0 do
-        pop A[0] and append it to sorted, n then is decremented
+        pop the first element of A and append it to sorted
+        n then is decremented
 
         let inserted = 1
 
@@ -25,7 +26,7 @@ StrandSortArray(A, n)
                 pop A[i], n then is decremented
                 increment inserted
 
-        MergeArray(sorted, sorted len, len(sorted) + inserted)
+        MergeArray(sorted, sorted len, sorted len + inserted)
 
         increase sorted len by inserted
 
