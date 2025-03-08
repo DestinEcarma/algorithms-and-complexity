@@ -23,56 +23,66 @@ int find_max_int(const int *arr, size_t len) {
 }
 
 int *bucket_sort_int(const int *arr, size_t len) {
+	///////////////////////
+	// Memory Allocation //
+	///////////////////////
+
 	int *sorted = malloc(sizeof(int) * len);
 
-	if (sorted != NULL) {
-		memcpy(sorted, arr, sizeof(int) * len);
+	if (sorted == NULL) {
+		return NULL;
+	}
 
-		NodeInt **buckets = calloc(len, sizeof(NodeInt *));
+	NodeInt **buckets = calloc(len, sizeof(NodeInt *));
 
-		if (buckets != NULL) {
-			int max = find_max_int(arr, len) + 1;
+	if (buckets == NULL) {
+		free(sorted);
+		return NULL;
+	}
 
-			for (size_t i = len - 1; i != ULONG_MAX; i--) {
-				size_t pos = len * sorted[i] / max;
+	memcpy(sorted, arr, sizeof(int) * len);
 
-				NodeInt *node = malloc(sizeof(NodeInt));
+	///////////////
+	// Algorithm //
+	///////////////
 
-				if (node != NULL) {
-					node->value = sorted[i];
+	int max = find_max_int(arr, len) + 1;
 
-					NodeInt **curr = &buckets[pos];
+	for (size_t i = len - 1; i != ULONG_MAX; i--) {
+		size_t pos = len * sorted[i] / max;
 
-					while (*curr != NULL && (*curr)->value < sorted[i]) {
-						curr = &(*curr)->next;
-					}
+		NodeInt *node = malloc(sizeof(NodeInt));
 
-					node->next = *curr;
-					*curr = node;
-				} else {
-					fprintf(stderr, "NodeInt memory allocation failed\n");
-					exit(1);
-				}
+		if (node != NULL) {
+			node->value = sorted[i];
+
+			NodeInt **curr = &buckets[pos];
+
+			while (*curr != NULL && (*curr)->value < sorted[i]) {
+				curr = &(*curr)->next;
 			}
 
-			for (size_t i = 0, j = 0; i < len; i++) {
-				NodeInt *curr = buckets[i];
-
-				while (curr != NULL) {
-					sorted[j++] = curr->value;
-
-					NodeInt *temp = curr;
-					curr = curr->next;
-					free(temp);
-				}
-			}
-
-			free(buckets);
+			node->next = *curr;
+			*curr = node;
 		} else {
-			free(sorted);
-			sorted = NULL;
+			fprintf(stderr, "NodeInt memory allocation failed\n");
+			exit(1);
 		}
 	}
+
+	for (size_t i = 0, j = 0; i < len; i++) {
+		NodeInt *curr = buckets[i];
+
+		while (curr != NULL) {
+			sorted[j++] = curr->value;
+
+			NodeInt *temp = curr;
+			curr = curr->next;
+			free(temp);
+		}
+	}
+
+	free(buckets);
 
 	return sorted;
 }

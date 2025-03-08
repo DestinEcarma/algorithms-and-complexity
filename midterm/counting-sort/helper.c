@@ -30,32 +30,42 @@ int find_min_int(const int *arr, size_t len) {
 }
 
 int *counting_sort_int(const int *arr, size_t len) {
+	///////////////////////
+	// Memory Allocation //
+	///////////////////////
+
 	int *sorted = malloc(len * sizeof(int));
 
-	if (sorted != NULL) {
-		size_t max = find_max_int(arr, len);
-
-		int *count = calloc(max + 1, sizeof(int));
-
-		if (count != NULL) {
-			for (size_t i = 0; i < len; i++) {
-				count[arr[i]]++;
-			}
-
-			for (size_t i = 1; i <= max; i++) {
-				count[i] += count[i - 1];
-			}
-
-			for (size_t i = len - 1; i != ULONG_MAX; i--) {
-				sorted[--count[arr[i]]] = arr[i];
-			}
-
-			free(count);
-		} else {
-			free(sorted);
-			sorted = NULL;
-		}
+	if (sorted == NULL) {
+		return NULL;
 	}
+
+	size_t max = find_max_int(arr, len);
+
+	int *count = calloc(max + 1, sizeof(int));
+
+	if (count == NULL) {
+		free(sorted);
+		return NULL;
+	}
+
+	///////////////
+	// Algorithm //
+	///////////////
+
+	for (size_t i = 0; i < len; i++) {
+		count[arr[i]]++;
+	}
+
+	for (size_t i = 1; i <= max; i++) {
+		count[i] += count[i - 1];
+	}
+
+	for (size_t i = len - 1; i != ULONG_MAX; i--) {
+		sorted[--count[arr[i]]] = arr[i];
+	}
+
+	free(count);
 
 	return sorted;
 }

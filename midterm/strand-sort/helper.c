@@ -37,79 +37,82 @@ void merge_arr(void *arr, void *temp, MergeMeta meta, size_t byte_size,
 		memcpy(arr + i++ * byte_size, value, byte_size);
 	}
 
-	if (left_idx < meta.mid) {
-		memcpy(arr + i * byte_size, temp + left_idx * byte_size,
-			   byte_size * (meta.mid - left_idx));
-	} else if (right_idx < right_len) {
-		memcpy(arr + i * byte_size, temp + (meta.mid + right_idx) * byte_size,
-			   byte_size * (right_len - right_idx));
-	}
+	memcpy(arr + i * byte_size, temp + left_idx * byte_size,
+		   byte_size * (meta.mid - left_idx));
+	memcpy(arr + i * byte_size, temp + (meta.mid + right_idx) * byte_size,
+		   byte_size * (right_len - right_idx));
 }
 
 void *strand_sort_array(const void *arr, size_t len, size_t byte_size,
 						int (*cmp)(const void *, const void *),
 						int (*cmp_merge)(const void *, const void *)) {
+	///////////////////////
+	// Memory Allocation //
+	///////////////////////
+
 	void *sorted = malloc(len * byte_size);
 	size_t sorted_len = 0;
 
-	if (sorted != NULL) {
-		void *arr_copy = malloc(len * byte_size);
-
-		if (arr_copy != NULL) {
-			memcpy(arr_copy, arr, len * byte_size);
-
-			void *temp = malloc(len * byte_size);
-
-			if (temp != NULL) {
-				while (len > 0) {
-					memcpy(sorted + sorted_len * byte_size, arr_copy,
-						   byte_size);
-
-					if (--len > 0) {
-						memmove(arr_copy, arr_copy + byte_size,
-								len * byte_size);
-					}
-
-					size_t inserted_pos = 0;
-
-					for (size_t i = 0; i < len; i++) {
-						void *position = arr_copy + i * byte_size;
-
-						if (cmp(position, sorted + (sorted_len + inserted_pos) *
-													   byte_size)) {
-							memcpy(sorted + (sorted_len + ++inserted_pos) *
-												byte_size,
-								   position, byte_size);
-
-							if ((i + 1) < len--) {
-								memmove(arr_copy + i * byte_size,
-										arr_copy + (i + 1) * byte_size,
-										(len - i) * byte_size);
-							}
-						}
-					}
-
-					merge_arr(
-						sorted, temp,
-						(MergeMeta){.mid = sorted_len,
-									.length = sorted_len + ++inserted_pos},
-						byte_size, cmp_merge);
-
-					sorted_len += inserted_pos;
-				}
-
-				free(temp);
-			} else {
-				free(sorted);
-				sorted = NULL;
-			}
-
-			free(arr_copy);
-		} else {
-			free(sorted);
-			sorted = NULL;
-		}
+	if (sorted == NULL) {
+		return NULL;
 	}
+
+	void *arr_copy = malloc(len * byte_size);
+
+	if (arr_copy == NULL) {
+		free(sorted);
+		return NULL;
+	}
+
+	void *temp = malloc(len * byte_size);
+
+	if (temp == NULL) {
+		free(sorted);
+		free(arr_copy);
+		return NULL;
+	}
+
+	///////////////
+	// Algorithm //
+	///////////////
+
+	while (len > 0) {
+		// Pop the first element of the array.
+		memcpy(sorted + sorted_len * byte_size, arr_copy, byte_size);
+
+		if (--len > 0) {
+			memmove(arr_copy, arr_copy + byte_size, len * byte_size);
+		}
+
+		size_t inserted_pos = 0;
+
+		for (size_t i = 0; i < len; i++) {
+			void *position = arr_copy + i * byte_size;
+
+			if (cmp(position,
+					sorted + (sorted_len + inserted_pos) * byte_size)) {
+				// Pop the element from the array.
+				memcpy(sorted + (sorted_len + ++inserted_pos) * byte_size,
+					   position, byte_size);
+
+				if ((i + 1) < len--) {
+					memmove(arr_copy + i * byte_size,
+							arr_copy + (i + 1) * byte_size,
+							(len - i) * byte_size);
+				}
+			}
+		}
+
+		merge_arr(sorted, temp,
+				  (MergeMeta){.mid = sorted_len,
+							  .length = sorted_len + ++inserted_pos},
+				  byte_size, cmp_merge);
+
+		sorted_len += inserted_pos;
+	}
+
+	free(temp);
+	free(arr_copy);
 
 	return sorted;
 }

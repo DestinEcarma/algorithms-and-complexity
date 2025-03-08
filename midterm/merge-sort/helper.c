@@ -37,14 +37,11 @@ void merge(void *arr, void *temp, MergeMeta meta, size_t byte_size,
 		memcpy(arr + i++ * byte_size, value, byte_size);
 	}
 
-	if (left_idx < meta.mid) {
-		memcpy(arr + i * byte_size, temp + left_idx * byte_size,
-			   byte_size * (meta.mid - left_idx));
-	} else if (right_idx < right_len) {
-		memcpy(arr + (left_idx + right_idx) * byte_size,
-			   temp + (meta.mid + right_idx) * byte_size,
-			   byte_size * (right_len - right_idx));
-	}
+	memcpy(arr + i * byte_size, temp + left_idx * byte_size,
+		   byte_size * (meta.mid - left_idx));
+	memcpy(arr + (left_idx + right_idx) * byte_size,
+		   temp + (meta.mid + right_idx) * byte_size,
+		   byte_size * (right_len - right_idx));
 }
 
 void _merge_sort_recursion(void *arr, void *temp, size_t len, size_t byte_size,
@@ -62,51 +59,66 @@ void _merge_sort_recursion(void *arr, void *temp, size_t len, size_t byte_size,
 
 void *merge_sort_recursion(const void *arr, size_t len, size_t byte_size,
 						   int (*cmp)(const void *, const void *)) {
+	///////////////////////
+	// Memory Allocation //
+	///////////////////////
+
 	void *sorted = malloc(len * byte_size);
 
-	if (sorted != NULL) {
-		memcpy(sorted, arr, len * byte_size);
-
-		void *temp = malloc(len * byte_size);
-
-		if (temp != NULL) {
-			_merge_sort_recursion(sorted, temp, len, byte_size, cmp);
-			free(temp);
-		} else {
-			free(sorted);
-			sorted = NULL;
-		}
+	if (sorted == NULL) {
+		return NULL;
 	}
+
+	memcpy(sorted, arr, len * byte_size);
+
+	void *temp = malloc(len * byte_size);
+
+	if (temp == NULL) {
+		free(sorted);
+		return NULL;
+	}
+
+	_merge_sort_recursion(sorted, temp, len, byte_size, cmp);
+	free(temp);
 
 	return sorted;
 }
 
 void *merge_sort_iterative(const void *arr, size_t len, size_t byte_size,
 						   int (*cmp)(const void *, const void *)) {
+	///////////////////////
+	// Memory Allocation //
+	///////////////////////
+
 	void *sorted = malloc(len * byte_size);
 
-	if (sorted != NULL) {
-		memcpy(sorted, arr, len * byte_size);
+	if (sorted == NULL) {
+		return NULL;
+	}
 
-		void *temp = malloc(len * byte_size);
+	memcpy(sorted, arr, len * byte_size);
 
-		if (temp != NULL) {
-			for (size_t size = 1; size < len; size *= 2) {
-				for (size_t start = 0; start < len - size; start += size * 2) {
-					MergeMeta meta = {.mid = size,
-									  .length = MIN(size * 2, len - start)};
+	void *temp = malloc(len * byte_size);
 
-					merge(sorted + start * byte_size, temp, meta, byte_size,
-						  cmp);
-				}
-			}
+	if (temp == NULL) {
+		free(sorted);
+		return NULL;
+	}
 
-			free(temp);
-		} else {
-			free(sorted);
-			sorted = NULL;
+	///////////////
+	// Algorithm //
+	///////////////
+
+	for (size_t size = 1; size < len; size *= 2) {
+		for (size_t start = 0; start < len - size; start += size * 2) {
+			MergeMeta meta = {.mid = size,
+							  .length = MIN(size * 2, len - start)};
+
+			merge(sorted + start * byte_size, temp, meta, byte_size, cmp);
 		}
 	}
+
+	free(temp);
 
 	return sorted;
 }

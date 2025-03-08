@@ -25,52 +25,62 @@ int find_max_int(const int *arr, size_t len) {
 }
 
 int *radix_lsd_sort_int(const int *arr, size_t len) {
+	///////////////////////
+	// Memory Allocation //
+	///////////////////////
+
 	int *sorted = malloc(sizeof(int) * len);
 
-	if (sorted != NULL) {
-		memcpy(sorted, arr, sizeof(int) * len);
+	if (sorted == NULL) {
+		return NULL;
+	}
 
-		NodeInt *buckets[BASE];
+	memcpy(sorted, arr, sizeof(int) * len);
 
-		int max = find_max_int(arr, len);
+	///////////////
+	// Algorithm //
+	///////////////
 
-		size_t digit = 1;
+	NodeInt *buckets[BASE];
 
-		while (max / digit > 0) {
-			for (size_t i = 0; i < BASE; i++) {
-				buckets[i] = NULL;
-			}
+	int max = find_max_int(arr, len);
 
-			for (size_t i = len - 1; i != ULONG_MAX; i--) {
-				size_t pos = sorted[i] / digit % 10;
+	size_t digit = 1;
 
-				NodeInt *node = malloc(sizeof(NodeInt));
-
-				if (node != NULL) {
-					node->value = sorted[i];
-					node->next = buckets[pos];
-
-					buckets[pos] = node;
-				} else {
-					fprintf(stderr, "NodeInt memory allocation failed\n");
-					exit(1);
-				}
-			}
-
-			for (size_t i = 0, j = 0; i < BASE; i++) {
-				NodeInt *curr = buckets[i];
-
-				while (curr != NULL) {
-					sorted[j++] = curr->value;
-
-					NodeInt *temp = curr;
-					curr = curr->next;
-					free(temp);
-				}
-			}
-
-			digit *= BASE;
+	while (max / digit > 0) {
+		for (size_t i = 0; i < BASE; i++) {
+			buckets[i] = NULL;
 		}
+
+		for (size_t i = len - 1; i != ULONG_MAX; i--) {
+			size_t pos = sorted[i] / digit % 10;
+
+			NodeInt *node = malloc(sizeof(NodeInt));
+
+			if (node != NULL) {
+				node->value = sorted[i];
+				node->next = buckets[pos];
+
+				buckets[pos] = node;
+			} else {
+				fprintf(stderr, "NodeInt memory allocation failed\n");
+				exit(1);
+			}
+		}
+
+		for (size_t i = 0, j = 0; i < BASE; i++) {
+			NodeInt *curr = buckets[i];
+
+			while (curr != NULL) {
+				sorted[j++] = curr->value;
+
+				NodeInt *temp = curr;
+				curr = curr->next;
+				free(temp);
+			}
+		}
+
+		digit *= BASE;
 	}
 
 	return sorted;
