@@ -120,4 +120,9 @@ TournamentSortOnlineK2(A, n)
             if k = 2 then
                 merge both partial sorted arrays
                 set k to 0
+
+    if k = 1 then
+        merge both partial sorted arrays
+
+    return the merged array
 ```
