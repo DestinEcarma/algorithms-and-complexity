@@ -137,3 +137,5 @@ TournamentSortOnlineK2(A, n)
 
     return sorted
 ```
+
+God tournament sort sucks; it's really only good for when your array is too large (database) and you don't care about performance.
