@@ -13,4 +13,7 @@ int *tournament_sort_offline(const int *arr, size_t len);
 /// This function is a tournament sort online V1 implementation for integers.
 int *tournament_sort_online_v1(const int *arr, size_t len);
 
+/// This function is a tournament sort online K2 implementation for integers.
+int *tournament_sort_online_k2(const int *arr, size_t len);
+
 #endif

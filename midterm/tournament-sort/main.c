@@ -39,6 +39,15 @@ int main() {
 		free(sorted_offline);
 	}
 
+	int *sorted_online_k2 = tournament_sort_online_k2(arr, len);
+
+	if (sorted_online_k2 != NULL) {
+		printf("Sorted (Online K2): ");
+		print_arr(sorted_online_k2, len, sizeof(int), print_int);
+
+		free(sorted_online_k2);
+	}
+
 	int arrST[ST_LENGTH];
 
 	for (size_t i = 0; i < ST_LENGTH; i++) {
