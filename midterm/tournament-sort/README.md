@@ -68,61 +68,72 @@ TournamentSortOnlineV1(A, n)
     Sort the partial sorted array A (e.g. Merge Sort)
 
 TournamentSortOnlineK2(A, n)
+    let sorted be an array of length n
+
     let tree be an array of length 7
 
-    let partial sorted be a 2D array of length 2, such that both arrays have length of n
+    let partial sorted be a 2D array of length 2,
+    such that both arrays have length of n
 
     for i = 3 to 6 do
-        tree[i] = i - 3
+        tree[i] = A[i - 3]
 
     let k = 0
 
     for i = 0 to (n - 1) do
-        let pushed = false
+        let can push = false
 
-        for right = 6 to 1 : right = right - 2 do
+        for current = 6 to 1 : current = current - 2 do
+            let right = current
             let left = right - 1
             let parent = left / 2
 
-            let left flagged = false
-            let right flagged = false
+            let left flag = false
+            let right flag = false
+
+            if right < 3 then
+                left = tree[left]
+                right = tree[right]
 
             if partial sorted[k] is not empty then
-                if tree[tree[left]] < last element of partial sorted[k] then
-                    set left flagged to true
+                if tree[left] is not INFINITY and tree[left] < the last element of partial sorted k then
+                    set left flag to true
 
-                if tree[tree[right]] < last element of partial sorted[k] only if any then
-                    set right flagged to true
+                if tree[left] is not INFINITY and tree[left] < the last element of partial sorted k then
+                    set right flag to true
 
-            if both left and right flagged are false then
-                if tree[tree[left]] <= tree[tree[right]] then
-                    set tree[parent] to tree[left]
+            if both left and right flags are false then
+                if tree[left] < tree[right] then
+                    set tree[parent] to left
                 else
-                    set tree[parent] to tree[right]
+                    set tree[parent] to right
 
-            else if left flagged is false then
-                set tree[parent] to tree[left]
-            else if right flagged is false then
-                set tree[parent] to tree[right]
+            else if left flag is false then
+                set tree[parent] to left
+            else if right flag is false then
+                set tree[parent] to right
 
-            if pushed is false then
-                set pushed to left flagged xor right flagged
+            if can push is false then
+                set can push to (not left flag) or (not right flag)
 
-        if pushed is true then
-            push tree[tree[0]] to partial sorted[k]
+    if can push is true then
+        push tree[tree[0]] to partial sorted[k]
 
-            if i < (n - 4) then
-                set tree[tree[0]] to i + 4
-
+        if i < (n - 4) then
+            set tree[tree[0]] to A[i + 4]
         else
-            increment k
+            set tree[tree[0]] to INFINITY
 
-            if k = 2 then
-                merge both partial sorted arrays
-                set k to 0
+    else
+        increment k
 
-    if k = 1 then
-        merge both partial sorted arrays
+        if k >= 2 then
+            merge both partial sorted arrays to sorted
+            k = 0
 
-    return the merged array
+        decrement i since no element was pushed
+
+    merge both partial sorted arrays to sorted
+
+    return sorted
 ```
