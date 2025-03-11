@@ -66,4 +66,58 @@ TournamentSortOnlineV1(A, n)
             set tree[tree[0]] to INFINITY
 
     Sort the partial sorted array A (e.g. Merge Sort)
+
+TournamentSortOnlineK2(A, n)
+    let tree be an array of length 7
+
+    let partial sorted be a 2D array of length 2, such that both arrays have length of n
+
+    for i = 3 to 6 do
+        tree[i] = i - 3
+
+    let k = 0
+
+    for i = 0 to (n - 1) do
+        let pushed = false
+
+        for right = 6 to 1 : right = right - 2 do
+            let left = right - 1
+            let parent = left / 2
+
+            let left flagged = false
+            let right flagged = false
+
+            if partial sorted[k] is not empty then
+                if tree[tree[left]] < last element of partial sorted[k] then
+                    set left flagged to true
+
+                if tree[tree[right]] < last element of partial sorted[k] only if any then
+                    set right flagged to true
+
+            if both left and right flagged are false then
+                if tree[tree[left]] <= tree[tree[right]] then
+                    set tree[parent] to tree[left]
+                else
+                    set tree[parent] to tree[right]
+
+            else if left flagged is false then
+                set tree[parent] to tree[left]
+            else if right flagged is false then
+                set tree[parent] to tree[right]
+
+            if pushed is false then
+                set pushed to left flagged xor right flagged
+
+        if pushed is true then
+            push tree[tree[0]] to partial sorted[k]
+
+            if i < (n - 4) then
+                set tree[tree[0]] to i + 4
+
+        else
+            increment k
+
+            if k = 2 then
+                merge both partial sorted arrays
+                set k to 0
 ```
