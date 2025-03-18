@@ -1,4 +1,5 @@
 #include "./../../common/print-arr.h"
+#include "./../../common/stress-test.h"
 #include "helper.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,22 +7,6 @@
 
 #define ST_LENGTH 10000
 #define ST_TIMES 100
-
-static inline unsigned long
-stress_test_sort(const void *arr, size_t len, size_t nt,
-				 int *(*radix)(const int *, size_t)) {
-	clock_t start = clock();
-
-	for (size_t _ = 0; _ < nt; _++) {
-		int *sorted = radix(arr, len);
-
-		if (sorted != NULL) {
-			free(sorted);
-		}
-	}
-
-	return (double)(clock() - start) / CLOCKS_PER_SEC * 1000;
-}
 
 int main() {
 	int arr[] = {9, 5, 10, 7, 3, 2, 6, 4, 1};
@@ -58,8 +43,8 @@ int main() {
 	printf("Length\t\t: %d\n", ST_LENGTH);
 	printf("Times\t\t: %d\n", ST_TIMES);
 
-	unsigned long time =
-		stress_test_sort(arrST, ST_LENGTH, ST_TIMES, tournament_sort_offline);
+	unsigned long time = stress_test_sort_int(arrST, ST_LENGTH, ST_TIMES,
+											  tournament_sort_offline);
 
 	printf("\nOffline\n");
 	printf("Total Time (ms)\t: %lu\n", time);
