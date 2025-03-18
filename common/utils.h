@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 
+/// A function to swap two values.
 static inline void swap(void *a, void *b, size_t byte_size) {
 	unsigned char temp;
 
