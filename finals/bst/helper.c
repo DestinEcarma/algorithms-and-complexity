@@ -11,6 +11,8 @@ void bst_insert(DNode **root, const void *value, size_t byte_size,
 	}
 
 	memcpy(node->value, value, byte_size);
+	node->left = NULL;
+	node->right = NULL;
 
 	while (*root != NULL) {
 		if (cmp(node, *root)) {
