@@ -36,8 +36,6 @@ QuickSortHoare(A, li, hi):
 
             if i < j then
                 swap A[i] and A[j]
-                increment i
-                decrement j
 
         Sort the left partition
         Sort the right partition

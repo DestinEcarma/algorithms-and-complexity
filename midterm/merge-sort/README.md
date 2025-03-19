@@ -43,8 +43,8 @@ MergeSortRecursion(A, T, n):
         Merge(A, t, mid, n)
 
 MergeSortIterative(A, T, n):
-    for size = 1 to n - 1 : size = 2 * size do
-        for start = 0 to n - 1 - size : start = start + 2 * size do
+    for size = 1 to (n - 1) : size = 2 * size do
+        for start = 0 to (n - 1 - size) : start = start + 2 * size do
             let mid = start + size
             let end = min(size * 2, n - start)
 
