@@ -25,12 +25,14 @@ int main() {
 
 	int x = root->value[0];
 
-	printf("Deleting %d\n", x);
+	printf("\nDeleting %d\n", x);
 
 	bst_delete(&root, &x, sizeof(int), diff_dll_int);
 
-	printf("\nBST: ");
+	printf("BST: ");
 	print_dll(root, print_dll_int);
+
+	printf("BST Root: %d\n", *(int *)root->value);
 
 	return 0;
 }
