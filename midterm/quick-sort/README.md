@@ -25,10 +25,10 @@ QuickSortLomuto(A, li, hi):
 
 QuickSortHoare(A, li, hi):
     if li < hi then
-        let pivot = A[hi]
+        let pivot = A[li]
 
-        let i = li
-        let j = hi
+        let i = li - 1
+        let j = hi + 1
 
         while i < j do
             increment i until A[i] >= pivot

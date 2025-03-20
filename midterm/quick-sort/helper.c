@@ -44,27 +44,27 @@ void *quick_sort_lomuto(const void *arr, size_t len, size_t byte_size,
 void _quick_sort_hoare(void *arr, MetaData meta, size_t byte_size,
 					   int (*cmp)(const void *, const void *)) {
 	if (meta.low < meta.high && meta.high < ULONG_MAX) {
-		void *pivot = arr + meta.high * byte_size;
+		void *pivot = arr + meta.low * byte_size;
 
-		size_t i = meta.low;
-		size_t j = meta.high;
+		long i = meta.low - 1;
+		long j = meta.high + 1;
 
 		while (i < j) {
-			while (cmp(arr + i * byte_size, pivot)) {
+			do {
 				i++;
-			}
+			} while (cmp(arr + i * byte_size, pivot));
 
-			while (cmp(pivot, arr + j * byte_size)) {
+			do {
 				j--;
-			}
+			} while (cmp(pivot, arr + j * byte_size));
 
 			if (i < j) {
-				swap(arr + i++ * byte_size, arr + j-- * byte_size, byte_size);
+				swap(arr + i * byte_size, arr + j * byte_size, byte_size);
 			}
 		}
 
-		_quick_sort_hoare(arr, (MetaData){meta.low, i - 1}, byte_size, cmp);
-		_quick_sort_hoare(arr, (MetaData){i, meta.high}, byte_size, cmp);
+		_quick_sort_hoare(arr, (MetaData){meta.low, j}, byte_size, cmp);
+		_quick_sort_hoare(arr, (MetaData){j + 1, meta.high}, byte_size, cmp);
 	}
 }
 
