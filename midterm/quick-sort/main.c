@@ -9,7 +9,7 @@
 #define ST_TIMES 100
 
 int main() {
-	int arr[] = {9, 5, 10, 7, 3, 2, 6, 4, 1};
+	int arr[] = {9, 9, 5, 10, 7, 3, 2, 6, 4, 1};
 	int len = sizeof(arr) / sizeof(int);
 
 	printf("Initial: ");
