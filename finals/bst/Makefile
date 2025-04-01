@@ -11,13 +11,13 @@ else
 	SEP = /
 endif
 
-# Source and header files
-SOURCES = helper.c main.c
-HEADERS = helper.h
+# Source files
+SOURCES = $(wildcard *.cpp)
+HEADERS = $(wildcard include/*.hpp)
 
 # Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -lm -O3 -funroll-loops
+CC = g++
+CFLAGS = -Wall -Wextra -std=c++17 -O3 -funroll-loops -Iinclud
 
 # Directory
 TARGET_DIR = target
@@ -25,7 +25,7 @@ BIN_DIR = $(TARGET_DIR)$(SEP)bin
 OBJ_DIR = $(TARGET_DIR)$(SEP)obj
 
 # Object files
-OBJECTS = $(patsubst %.c,$(OBJ_DIR)$(SEP)%.o,$(SOURCES))
+OBJECTS = $(patsubst %.cpp,$(OBJ_DIR)$(SEP)%.o,$(SOURCES))
 
 # Target executable
 TARGET = $(BIN_DIR)$(SEP)main$(EXE_EXT)
@@ -38,9 +38,13 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-# Rule to compile the .c files into .o files
-$(OBJ_DIR)$(SEP)%.o: %.c $(HEADERS) | $(OBJ_DIR)
+# Rule to compile the .cpp files into .o files
+$(OBJ_DIR)$(SEP)%.o: %.cpp $(HEADERS) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -MM -MT $@ -MF $(patsubst %.o,%.d,$@) $<
+
+# Include dependency files if they exist
+-include $(OBJECTS:.o=.d)
 
 # Rule to create the target directories if they don't exist
 $(BIN_DIR) $(OBJ_DIR):
