@@ -1,0 +1,10 @@
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+NamespaceIndentation: All
+FixNamespaceComments: false
+
+BraceWrapping:
+  AfterClass: false
+  AfterFunction: false
