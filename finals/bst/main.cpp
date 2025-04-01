@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     DoublyNode<int> *head = nullptr;
 
-    srand(100);
+    srand(69);
 
     for (int i = 0; i < MAX; i++) {
         int value = rand() % 100;
