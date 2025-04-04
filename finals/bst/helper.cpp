@@ -1,6 +1,6 @@
 #include "include/helper.hpp"
 
-template <typename T> void bst_insert(DoublyNode<T> *&root, T value) {
+template <typename T> void bst_insert(DoublyNode<T> *&root, const T &value) {
     DoublyNode<T> *node = new DoublyNode<T>(value);
 
     // We can't use `root` here because `root` is a reference. Reference and
@@ -15,7 +15,7 @@ template <typename T> void bst_insert(DoublyNode<T> *&root, T value) {
     *trav = node;
 }
 
-template <typename T> void bst_delete(DoublyNode<T> *&root, T value) {
+template <typename T> void bst_delete(DoublyNode<T> *&root, const T &value) {
     if (root->value < value) {
         bst_delete(root->left, value);
     } else if (root->value > value) {
@@ -62,5 +62,5 @@ template <typename T> void bst_delete(DoublyNode<T> *&root, T value) {
     }
 }
 
-template void bst_insert<int>(DoublyNode<int> *&, int);
-template void bst_delete<int>(DoublyNode<int> *&, int);
+template void bst_insert<int>(DoublyNode<int> *&, const int &);
+template void bst_delete<int>(DoublyNode<int> *&, const int &);
