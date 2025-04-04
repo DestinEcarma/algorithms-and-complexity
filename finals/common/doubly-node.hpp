@@ -8,7 +8,7 @@ template <typename T> class DoublyNode {
     DoublyNode<T> *left;
     DoublyNode<T> *right;
 
-    DoublyNode(T value) : value(value), left(nullptr), right(nullptr) {}
+    DoublyNode(const T &value) : value(value), left(nullptr), right(nullptr) {}
 
     std::string to_string() {
         std::string result;
