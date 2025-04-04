@@ -17,7 +17,7 @@ HEADERS = $(wildcard include/*.hpp)
 
 # Compiler and flags
 CC = g++
-CFLAGS = -Wall -Wextra -std=c++17 -O3 -funroll-loops -Iinclud
+CFLAGS = -Wall -Wextra -std=c++20 -O3 -funroll-loops -Iinclud
 
 # Directory
 TARGET_DIR = target
