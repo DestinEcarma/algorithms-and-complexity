@@ -41,23 +41,15 @@ template <typename T> void bst_delete(DoublyNode<T> *&root, const T &value) {
 
             // Here we are using the right subtree to find the minimum
             // value.
-            DoublyNode<T> *parent = root;
             DoublyNode<T> *successor = root->right;
 
             while (successor->left != nullptr) {
-                parent = successor;
                 successor = successor->left;
             }
 
             root->value = successor->value;
 
-            if (parent->left == successor) {
-                parent->left = successor->right;
-            } else {
-                parent->right = successor->right;
-            }
-
-            delete successor;
+            bst_delete(root->right, successor->value);
         }
     }
 }

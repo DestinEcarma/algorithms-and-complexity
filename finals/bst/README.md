@@ -29,19 +29,12 @@ BSTDelete(*&root, key)
         else if *root has no right child then
             remove *root and set root to the left child of root
         else
-            Let *parent be *root
             Let *successor be the right child of root
 
             while successor has a left child do
-                set parent to successor
                 set successor to the left child of successor
 
             set the key of *root to the key of successor
 
-            if parent's left child is successor then
-                set the left child of parent to the right child of successor
-            else
-                set the right child of parent to the right child of successor
-
-            delete successor
+            BSTDelete(right child of root, key of successor)
 ```
