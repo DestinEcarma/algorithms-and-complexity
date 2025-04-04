@@ -20,3 +20,8 @@ Blah blah blah, a repo for my algorithms and complexity course, also known as CS
 - [Tournament Sort](midterm/tournament-sort)
 - [Gnome Sort](midterm/gnome-sort)
 - [Strand Sort](midterm/strand-sort)
+
+## Finals
+
+- [Binary Search Tree](finals/bst)
+- [AVL Tree](finals/avl-tree)
