@@ -1,28 +1,9 @@
 #pragma once
 
-#include <string>
+#include "doubly-linked-list.hpp"
 
-template <typename T> class DoublyNode {
+template <typename T>
+class DoublyNode : public DoublyLinkedList<T, DoublyNode<T>> {
   public:
-    T value;
-    DoublyNode<T> *left;
-    DoublyNode<T> *right;
-
-    DoublyNode(const T &value) : value(value), left(nullptr), right(nullptr) {}
-
-    std::string to_string() {
-        std::string result;
-
-        if (left != nullptr) {
-            result += left->to_string();
-        }
-
-        result += std::to_string(value) + " ";
-
-        if (right != nullptr) {
-            result += right->to_string();
-        }
-
-        return result;
-    }
+    DoublyNode(const T &value) : DoublyLinkedList<T, DoublyNode<T>>(value) {}
 };
