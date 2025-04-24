@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <string>
 
 template <typename T, typename N> class DoublyLinkedList {
@@ -24,5 +25,12 @@ template <typename T, typename N> class DoublyLinkedList {
         }
 
         return result;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os,
+                                    const DoublyLinkedList<T, N> &root) {
+        os << root.to_string();
+
+        return os;
     }
 };
