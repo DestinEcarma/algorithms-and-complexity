@@ -10,7 +10,7 @@ template <typename T, typename N> class DoublyLinkedList {
 
     DoublyLinkedList(const T &value) : value(value) {}
 
-    std::string to_string() {
+    std::string to_string() const {
         std::string result;
 
         if (left != nullptr) {
