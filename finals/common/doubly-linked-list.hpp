@@ -2,12 +2,6 @@
 
 #include <string>
 
-template <typename T, typename N = void> class DoublyLinkedList;
-
-template <typename T>
-class DoublyLinkedList<T, void>
-    : public DoublyLinkedList<T, DoublyLinkedList<T>> {};
-
 template <typename T, typename N> class DoublyLinkedList {
   public:
     T value;
