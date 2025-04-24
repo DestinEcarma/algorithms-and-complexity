@@ -20,14 +20,14 @@ int main() {
         bst_insert(head, value);
     }
 
-    cout << "BST: " << head->to_string() << endl;
+    cout << "BST: " << *head << endl;
     cout << "Head value: " << head->value << endl << endl;
 
     cout << "Deleting the root node..." << endl;
 
     bst_delete(head, head->value);
 
-    cout << "BST: " << head->to_string() << endl;
+    cout << "BST: " << *head << endl;
 
     cout << "Head value: " << head->value << endl;
 
