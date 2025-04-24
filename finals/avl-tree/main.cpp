@@ -20,14 +20,14 @@ int main() {
         avl_insert(head, value);
     }
 
-    cout << "BST: " << head->to_string() << endl;
+    cout << "BST: " << *head << endl;
     cout << "Head value: " << head->value << endl << endl;
 
     cout << "Deleting the root node..." << endl;
 
     avl_delete(head, head->value);
 
-    cout << "BST: " << head->to_string() << endl;
+    cout << "BST: " << *head << endl;
 
     cout << "Head value: " << head->value << endl;
 
