@@ -16,9 +16,9 @@ template <typename T> void bst_insert(DoublyNode<T> *&root, const T &value) {
 }
 
 template <typename T> void bst_delete(DoublyNode<T> *&root, const T &value) {
-    if (root->value < value) {
+    if (value < root->value) {
         bst_delete(root->left, value);
-    } else if (root->value > value) {
+    } else if (value > root->value) {
         bst_delete(root->right, value);
     } else {
         if (root->left == nullptr) {
